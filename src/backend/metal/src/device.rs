@@ -576,6 +576,29 @@ impl adapter::PhysicalDevice<Backend> for PhysicalDevice {
     }
 }
 
+
+
+impl Device {
+    pub fn start_capture(&self) {
+        let device = self.shared.device.lock();
+        let shared_capture_manager = CaptureManager::shared();
+        let default_capture_scope =
+            shared_capture_manager.new_capture_scope_with_device(&device);
+        shared_capture_manager.set_default_capture_scope(&default_capture_scope);
+        shared_capture_manager.start_capture_with_scope(&default_capture_scope);
+        default_capture_scope.begin_scope();
+    }
+
+    pub fn stop_capture(&self) {
+        let shared_capture_manager = CaptureManager::shared();
+        if let Some(default_capture_scope) = shared_capture_manager.default_capture_scope() {
+            default_capture_scope.end_scope();
+        }
+        shared_capture_manager.stop_capture();
+    }
+}
+
+
 pub struct LanguageVersion {
     pub major: u8,
     pub minor: u8,
