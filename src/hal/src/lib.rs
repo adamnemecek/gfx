@@ -736,4 +736,9 @@ pub trait Backend: 'static + Sized + Eq + Clone + Hash + fmt::Debug + Any + Send
     type Event: fmt::Debug + Any + Send + Sync;
     /// The corresponding query pool type for this backend.
     type QueryPool: fmt::Debug + Any + Send + Sync;
+
+    // ///
+    // fn start_capture(&self);
+    // ///
+    // fn stop_capture(&self);
 }

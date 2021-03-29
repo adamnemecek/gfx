@@ -60,6 +60,14 @@ impl hal::Backend for Backend {
     type Semaphore = ();
     type Event = ();
     type QueryPool = ();
+
+    // fn start_capture(&self) {
+    //     todo!("start capture not implemented")
+    // }
+
+    // fn stop_capture(&self) {
+    //     todo!("stop capture not implemented")
+    // }
 }
 
 /// Dummy physical device.
@@ -189,6 +197,14 @@ impl queue::Queue<Backend> for Queue {
 #[derive(Debug)]
 pub struct Device;
 impl device::Device<Backend> for Device {
+    fn start_capture(&self) {
+        todo!("start capture not implemented!")
+    }
+
+    fn stop_capture(&self) {
+        todo!("stop capture not implemented!")
+    }
+
     unsafe fn create_command_pool(
         &self,
         _: queue::QueueFamilyId,

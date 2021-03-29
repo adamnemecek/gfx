@@ -187,6 +187,12 @@ pub struct NagaShader {
 /// benefit from the backends that support synchronization of the `Device`.
 ///
 pub trait Device<B: Backend>: fmt::Debug + Any + Send + Sync {
+
+    ///
+     fn start_capture(&self);
+
+    ///
+    fn stop_capture(&self);
     /// Allocates a memory segment of a specified type.
     ///
     /// There is only a limited amount of allocations allowed depending on the implementation!

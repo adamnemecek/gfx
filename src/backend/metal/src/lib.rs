@@ -481,6 +481,14 @@ impl hal::Backend for Backend {
     type Semaphore = native::Semaphore;
     type Event = native::Event;
     type QueryPool = native::QueryPool;
+
+    // fn start_capture(&self) {
+    //     todo!("start capture not implemented")
+    // }
+
+    // fn stop_capture(&self) {
+    //     todo!("stop capture not implemented")
+    // }
 }
 
 const RESOURCE_HEAP_SUPPORT: &[MTLFeatureSet] = &[
